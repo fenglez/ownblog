@@ -8,16 +8,15 @@
         <result column="ctime" property="ctime" />
         <result column="utime" property="utime" />
     </resultMap>
-    <!--<sql id="columns">-->
-    <!--*-->
-    <!--</sql>-->
+
     <select id="getUserById" parameterType="Long" resultMap="user">
         SELECT *
         FROM user
         <where> id=#{id}
         </where>
     </select>
-    <select id="getUserById" parameterType="Long" resultMap="user">
+
+    <select id="getUserByUserId" parameterType="Long" resultMap="user">
         SELECT *
         FROM user
         <where> id=#{id}

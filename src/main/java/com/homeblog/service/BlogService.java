@@ -5,6 +5,7 @@ import com.homeblog.bo.User;
 import com.homeblog.dao.BlogDAO;
 import com.homeblog.dao.UserDAO;
 import com.homeblog.model.FanClass;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -14,9 +15,9 @@ import java.util.Map;
 
 @Service
 public class BlogService {
-    @Resource
+    @Autowired
     BlogDAO blogDAO;
-    @Resource
+    @Autowired
     UserDAO userDAO;
 
     public FanClass<User,Blog> getBlogList(int userId) {
@@ -34,6 +35,5 @@ public class BlogService {
 
     public long save(Blog blog){
         return blogDAO.save(blog);
-
     }
 }
