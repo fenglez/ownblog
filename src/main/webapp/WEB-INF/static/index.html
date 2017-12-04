@@ -150,6 +150,7 @@
     <script type="text/javascript">jQuery(".lanmubox").slide({easing:"easeOutBounce",delayTime:400});</script>
     <script type="text/javascript" src="js/nav.js"></script>
     <script type="text/javascript">
+        loadXMLDoc();
         function loadXMLDoc()
         {
             var xmlhttp;
@@ -158,8 +159,9 @@
             } else {// code for IE6, IE5
                 xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
             }
-            xmlhttp.open("GET","/blog/list/1",false);
+            xmlhttp.open("GET","/ownblog/blog/list/1001",false);
             xmlhttp.send();
+            alert(xmlhttp.responseText);
             document.getElementById("c_left").innerHTML=xmlhttp.responseText;
         }
     </script>
