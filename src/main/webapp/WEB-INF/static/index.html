@@ -43,6 +43,15 @@
            <h2>我的<span>博客</span></h2>
            </div>
           <div class="content_text">
+              <ul class="list_box" id="list_box">
+                  <script type="text/template" data-id="list_tpl">
+                      <li class="list_item">
+                          <h3>$title$</h3>
+                          <p>$content$</p>
+                      </li>
+                  </script>
+              </ul>
+
            <!--wz-->
            <div class="wz">
             <h3><a href="#" title="浅谈：html5和html的区别">浅谈：html5和html的区别</a></h3>
@@ -160,7 +169,12 @@
             }
             xmlhttp.open("GET","/blog/list/1",false);
             xmlhttp.send();
-            document.getElementById("c_left").innerHTML=xmlhttp.responseText;
+            var htmlList = '',
+                htmlTemp = $("#list_box script[data-id='list_tpl']").html();
+            xmlhttp.responseText.data.forEach(function(object) {
+                htmlList += htmlTemp.tmp(object);
+            });
+            $("#list_box").html(htmlList);
         }
     </script>
 </body>
