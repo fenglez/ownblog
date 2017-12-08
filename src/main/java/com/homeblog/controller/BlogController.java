@@ -1,6 +1,8 @@
 package com.homeblog.controller;
 
 import com.homeblog.bo.Blog;
+import com.homeblog.bo.User;
+import com.homeblog.model.FanClass;
 import com.homeblog.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,11 +18,11 @@ public class BlogController {
     BlogService blogService;
 
     @RequestMapping("list/{userId}")
-    public @ResponseBody String getList(@PathVariable("userId") int userId){
+    public @ResponseBody FanClass<User,Blog> getList(@PathVariable("userId") int userId){
         if(userId <=0) {
-            return "";
+            return null;
         }
-        return blogService.getBlogList(userId).toString();
+        return blogService.getBlogList(userId);
     }
 
     @RequestMapping(value="/getById/{blogId}",method=RequestMethod.GET)
